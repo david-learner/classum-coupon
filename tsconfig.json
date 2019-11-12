@@ -15,7 +15,8 @@
         "src/types/*"
       ]
     },
-    "baseUrl": "."
+    "baseUrl": ".",
+    "rootDir": "."
   },
   "include": [
     "src/**/*",
