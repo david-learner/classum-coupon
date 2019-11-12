@@ -18,19 +18,10 @@ module.exports = {
                     transpileOnly: true
                 }
             },
-            // { test: /\.handlebars$/, loader: "handlebars-loader" }
         ],
     },
     plugins: [
-        // new webpack.LoaderOptionsPlugin({
-        //     options: {
-        //         handlebarsLoader: {}
-        //     }
-        // }),
-        // new HtmlWebpackPlugin({
-        //     title: 'My awesome service',
-        //     template: './views/layouts/main.handlebars'
-        // })
+        
     ],
     resolve: {
         extensions: [".ts", ".js"]

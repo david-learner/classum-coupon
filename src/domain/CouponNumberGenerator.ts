@@ -1,6 +1,4 @@
-import crypto from "crypto"
-
-export class CouponNumberGenerator {
+export default class CouponNumberGenerator {
     /**
      * generate
      */
