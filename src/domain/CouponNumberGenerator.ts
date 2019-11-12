@@ -3,6 +3,6 @@ export default class CouponNumberGenerator {
      * generate
      */
     public generate(email: string):string {
-        return "null";
+        return "ABCD1234EFGH5678";
     }
 }  

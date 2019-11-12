@@ -7,9 +7,12 @@ import { Coupon } from "../domain/Coupon";
  */
 export const createCoupon = (req: Request, res: Response) => {
     const coupon = new Coupon(req.body.email);
-    // console.log(coupon.toString());
-    let serialized = JSON.stringify(coupon);
-    console.log(serialized);
-    console.log(JSON.parse(serialized));
-    res.send(req.body.email);
+    let couponData = JSON.stringify(coupon.toDto());
+    res.writeHead(200, {
+        'Content-Length': Buffer.byteLength(couponData),
+        'content-type' : 'application/json'
+    }).end(couponData);
+
 };
+
+// export const 

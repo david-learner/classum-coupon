@@ -13,7 +13,6 @@ gulp.task('compile', function() {
     return stream;
 });
 
-
 gulp.task('test', function(){
     // 컴파일된 dist내 js파일 중 test에 해당하는 것들 실행
     var stream = gulp.src(['./dist/test/**/*.test.js'], {base: '.'})

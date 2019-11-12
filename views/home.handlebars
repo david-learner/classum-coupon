@@ -2,14 +2,20 @@
 <div>
     <div id="input">
         <form id='couponForm' action="/coupons" method="post">
-            <input type='email' name='email' value="classum@gmail.com">
+            <div style="margin: 20px;">
+                <input type='email' name='email' value="classum@gmail.com" placeholder="email@email.com">
+                <span>
+                    <button type="button" id='createCoupon'>발급</button>
+                    <button type="button" id='readCoupon'>조회</button>
+                </span>
+            </div>
+            <div style="margin: 20px;">
+                <input type='text' maxlength="20" name='coupon-number' value="" placeholder="ABCD-1234-EFGH-5678">
+                <span> <button type="button" id='useCoupon'>사용</button></span>
+            </div>
         </form>
-        <p>
-            <button id='createCoupon'>발급</button>
-            <button id='readCoupon'>조회</button>
-        </p>
     </div>
-    <div id="output">
-        
+    <div id="output" style="margin: 20px;">
+
     </div>
 </div>

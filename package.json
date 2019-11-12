@@ -8,8 +8,8 @@
     "tsc:watch": "tsc --watch",
     "nodemon": "nodemon ./dist/server",
     "build": "npm run tsc && webpack && npm run nodemon",
-    "compile": "gulp compile",
-    "test": "gulp test",
+    "build:gulp": "gulp compile && webpack && npm run nodemon",
+    "test": "gulp",
     "mocha": "mocha ./src/test/**/*.test.js"
   },
   "dependencies": {

@@ -5,14 +5,13 @@ import exphbs from "express-handlebars";
 
 // Controllers (route handlers)
 import * as indexController from "./controllers/index";
-import * as couponController from "./controllers/coupons";
+import * as couponController from "./controllers/CouponController";
 
 // Create Express server
 const app = express();
 
 // Express configuration
 app.set("port", process.env.PORT || 3000);
-// app.set("views", path.join(__dirname, "../views"));
 app.engine('handlebars', exphbs());
 app.set("view engine", "handlebars");
 
