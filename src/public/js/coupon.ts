@@ -17,8 +17,8 @@ $('#createCoupon').on("click", function () {
                 "발급된 쿠폰 번호는 [" + data['number'] + "]이며 <br/>"
                 + "만료기간은 지금으로부터 3일 뒤인 [ "+ data['expiredDate'] +" ]까지 입니다";
         }
-
     }).fail(function (jqXHR, textStatus, errorThrown) {
-
+        let error = JSON.parse(jqXHR.responseText);
+        alert(error['message']);
     });
 });
