@@ -13,7 +13,7 @@ export class Coupon {
 
     constructor(email: string) {
         this.email = email;
-        this.number = new CouponNumberGenerator().generate(email);
+        this.number = new CouponNumberGenerator().generate();
         this.createdDate = new Date(Date.now());
         this.expiredDate = new Date(this.createdDate.getTime() + DEFAULT_EXPIRE_DAY);
         this.used = false;
