@@ -41,13 +41,4 @@ describe('쿠폰번호생성', function() {
         let randomAlphanumeric:string = "1J2D113K2C1Z4732";
         expect(false).equals(generator.isAlphanumeric(randomAlphanumeric));
     });
-
-    it('날짜', () => {
-        let now = new Date();
-        let expiredDate = new Date('November 12, 2019 23:15:30');
-        
-        console.log(now);
-        console.log(expiredDate);
-        console.log(expiredDate < now);
-    })
 });
