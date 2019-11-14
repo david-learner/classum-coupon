@@ -15,13 +15,12 @@ export class Coupon {
 
     constructor(email: string) {
         this._email = email;
-        this._number = new CouponNumberGenerator().generate();
+        this._number = this.generateNumber();
         this._createdDate = new Date(Date.now());
         this._expiredDate = new Date(this._createdDate.getTime() + DEFAULT_EXPIRE_DAY);
         this._used = false;
     }
 
-    
     public get email(): string { return this._email };
     public set email(email: string) { this._email = email };
     public get number(): string { return this._number };
@@ -31,11 +30,12 @@ export class Coupon {
     public get expiredDate(): Date { return this._expiredDate };
     public set expiredDate(expiredDate: Date) { this._expiredDate = expiredDate };
 
+    generateNumber(): string { return new CouponNumberGenerator().generate() };
     isExpired(): boolean {
         // ISO format(UTC를 ISO8601 형태로 지정)
         // firestore에 저장될 때 ISO포맷으로 저장, 프론트에서 사용자의 timezone에 맞게 변환 출력
-        let now:Date = new Date();
-        let expiredDateWithOffset:Date = new Date(this._expiredDate);
+        let now: Date = new Date();
+        let expiredDateWithOffset: Date = new Date(this._expiredDate);
         console.log("now: " + now + " expiredDateWithOffset : " + expiredDateWithOffset);
         if (expiredDateWithOffset < now) {
             return true;

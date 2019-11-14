@@ -19,6 +19,12 @@ export const createCoupon = async (req: Request, res: Response) => {
 
     // generate new coupon and save to firestore
     let coupon = new Coupon(email);
+    let documents;
+    do{
+        coupon.generateNumber();
+        documents = await db.collection("coupons").where("_number", "==", coupon.number).get();
+    }while(!documents.empty);
+
     let jsonObject: object = JSON.parse(JSON.stringify(coupon));
     db.collection('coupons').doc(coupon.email).set(jsonObject);
 
