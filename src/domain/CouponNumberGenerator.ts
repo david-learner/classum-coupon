@@ -25,31 +25,31 @@ export default class CouponNumberGenerator {
 
     public isAlphanumeric(randomAlphanumeric: string): boolean {
         // 0-9, a-z, A-Z를 하나 이상씩 포함하는 문자열
-        // let alphanumericRegExp = new RegExp("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{16,16}");
-        // return alphanumericRegExp.test(randomAlphanumeric);
+        let alphanumericRegExp = new RegExp("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{16,16}");
+        return alphanumericRegExp.test(randomAlphanumeric);
 
-        let digit:boolean = false;
-        let lower:boolean = false;
-        let upper:boolean = false;
+        // let digit:boolean = false;
+        // let lower:boolean = false;
+        // let upper:boolean = false;
         
-        let characters:string[] = randomAlphanumeric.split("");
-        characters.forEach(character => {
-            // 0-9
-            if (!digit && (character.charCodeAt(0) >= 48 && character.charCodeAt(0) <= 57)) {
-                digit = true;
-            }
-            // A-Z
-            if (!lower && (character.charCodeAt(0) >= 65 && character.charCodeAt(0) <= 90)) {
-                lower = true;
-            }
-            // a-z
-            if (!upper && (character.charCodeAt(0) >= 97 && character.charCodeAt(0) <= 122)) {
-                upper = true;
-            }
-        });
-        if (digit && lower && upper) {
-            return true;
-        }
-        return false;
+        // let characters:string[] = randomAlphanumeric.split("");
+        // characters.forEach(character => {
+        //     // 0-9
+        //     if (!digit && (character.charCodeAt(0) >= 48 && character.charCodeAt(0) <= 57)) {
+        //         digit = true;
+        //     }
+        //     // A-Z
+        //     if (!lower && (character.charCodeAt(0) >= 65 && character.charCodeAt(0) <= 90)) {
+        //         lower = true;
+        //     }
+        //     // a-z
+        //     if (!upper && (character.charCodeAt(0) >= 97 && character.charCodeAt(0) <= 122)) {
+        //         upper = true;
+        //     }
+        // });
+        // if (digit && lower && upper) {
+        //     return true;
+        // }
+        // return false;
     }
 }  

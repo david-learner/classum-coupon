@@ -50,6 +50,7 @@
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
     "nock": "^11.7.0",
+    "nodemon": "^1.19.4",
     "supertest": "^4.0.2",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.2",

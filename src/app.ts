@@ -25,7 +25,6 @@ app.use(
 // REQUEST MAPPING
 app.get("/", indexController.index);
 app.get("/api/coupons", couponController.readCoupon);
-app.get("/api/coupons/number", couponController.readCouponFromCouponNumber);
 app.post("/api/coupons", couponController.createCoupon);
 app.post("/api/coupons/use", couponController.useCoupon);
 

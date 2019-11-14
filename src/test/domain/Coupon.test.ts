@@ -1,44 +1,26 @@
-import * as mocha from 'mocha';
 import * as chai from 'chai';
-import * as crypto from 'crypto';
-import * as bases from 'bases';
-
-import CouponNumberGenerator from '../../domain/CouponNumberGenerator';
+import { Coupon } from '../../domain/Coupon';
 
 let expect = chai.expect;
-var assert = require("assert");
 
-describe('쿠폰번호생성', function() {
-    let generator = new CouponNumberGenerator();
-
-    it('생성된 번호가 16자리인가', () => {
-        let couponNumber:string = generator.generate();
-        expect(couponNumber.length).equal(16);
+describe('쿠폰', function() {
+    let email = "classum@gmail.com";
+    let coupon;
+    it('사용된 쿠폰', () => {
+        coupon = new Coupon(email);
+        coupon.use();
+        expect(coupon.isUsed()).equal(true);
     });
 
-    it('생성된 번호가 정상적인 alphanumeric일 때', () => {
-        let randomAlphanumeric:string = generator.getRandomAlphanumeric(CouponNumberGenerator.DEFAULT_SIZE);
-        console.log('generated ' + randomAlphanumeric);
-        expect(true).equals(generator.isAlphanumeric(randomAlphanumeric));
+    it('사용기한이 만료된 쿠폰', () => {
+        coupon = new Coupon(email);
+        coupon.createdDate = new Date('2019-11-10T10:15:21.903Z');
+        coupon.expiredDate = new Date('2019-11-13T10:15:21.903Z');
+        expect(coupon.isExpired()).equal(true);
     });
 
-    it('생성된 번호가 숫자만 있을 때', () => {
-        let randomAlphanumeric:string = "1234567890123456";
-        expect(false).equals(generator.isAlphanumeric(randomAlphanumeric));
-    });
-
-    it('생성된 번호가 문자만 있을 때', () => {
-        let randomAlphanumeric:string = "ABCEDFGhijklmnop";
-        expect(false).equals(generator.isAlphanumeric(randomAlphanumeric));
-    });
-
-    it('생성된 번호가 숫자, 소문자만 있을 때', () => {
-        let randomAlphanumeric:string = "1j2d113k2c1z4732";
-        expect(false).equals(generator.isAlphanumeric(randomAlphanumeric));
-    });
-
-    it('생성된 번호가 숫자, 대문자만 있을 때', () => {
-        let randomAlphanumeric:string = "1J2D113K2C1Z4732";
-        expect(false).equals(generator.isAlphanumeric(randomAlphanumeric));
+    it('쿠폰 사용 기간은 3일', () => {
+        coupon = new Coupon(email);
+        expect(coupon.expiredDate.getTime() - coupon.createdDate.getTime()).equal(259200000);
     });
 });
