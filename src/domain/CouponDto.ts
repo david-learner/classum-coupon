@@ -1,9 +1,17 @@
 export default class CouponDto {
-    number: string;
-    expiredDate: Date;
+    private _number: string;
+    private _expiredDate: Date;
 
     constructor(number: string, expiredDate: Date) {
-        this.number = number;
-        this.expiredDate = expiredDate;
+        this._number = number;
+        this._expiredDate = expiredDate;
+    }
+
+    public get number() {
+        return this._number;
+    }
+
+    public get expiredDate() {
+        return this._expiredDate;
     }
 }

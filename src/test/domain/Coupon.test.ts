@@ -17,17 +17,37 @@ describe('쿠폰번호생성', function() {
     });
 
     it('생성된 번호가 정상적인 alphanumeric일 때', () => {
-        let alphanumeric:string = generator.getRandomAlphanumeric(CouponNumberGenerator.DEFAULT_SIZE);
-        expect(true).equals(generator.isAlphanumeric(alphanumeric));
+        let randomAlphanumeric:string = generator.getRandomAlphanumeric(CouponNumberGenerator.DEFAULT_SIZE);
+        console.log('generated ' + randomAlphanumeric);
+        expect(true).equals(generator.isAlphanumeric(randomAlphanumeric));
     });
 
     it('생성된 번호가 숫자만 있을 때', () => {
-        let alphanumeric:string = "1234567890123456";
-        expect(false).equals(generator.isAlphanumeric(alphanumeric));
+        let randomAlphanumeric:string = "1234567890123456";
+        expect(false).equals(generator.isAlphanumeric(randomAlphanumeric));
     });
 
     it('생성된 번호가 문자만 있을 때', () => {
-        let alphanumeric:string = "ABCEDFGhijklmnop";
-        expect(false).equals(generator.isAlphanumeric(alphanumeric));
+        let randomAlphanumeric:string = "ABCEDFGhijklmnop";
+        expect(false).equals(generator.isAlphanumeric(randomAlphanumeric));
     });
+
+    it('생성된 번호가 숫자, 소문자만 있을 때', () => {
+        let randomAlphanumeric:string = "1j2d113k2c1z4732";
+        expect(false).equals(generator.isAlphanumeric(randomAlphanumeric));
+    });
+
+    it('생성된 번호가 숫자, 대문자만 있을 때', () => {
+        let randomAlphanumeric:string = "1J2D113K2C1Z4732";
+        expect(false).equals(generator.isAlphanumeric(randomAlphanumeric));
+    });
+
+    it('날짜', () => {
+        let now = new Date();
+        let expiredDate = new Date('November 12, 2019 23:15:30');
+        
+        console.log(now);
+        console.log(expiredDate);
+        console.log(expiredDate < now);
+    })
 });

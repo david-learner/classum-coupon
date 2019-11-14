@@ -22,12 +22,10 @@ app.use(
     express.static(path.join(__dirname, "public"), { maxAge: 31557600000 })
 );
 
-/**
- * Primary app routes.
- */
+// REQUEST MAPPING
 app.get("/", indexController.index);
-app.post("/coupons", couponController.createCoupon);
-// app.get("/login", userController.getLogin);
-// app.post("/login", userController.postLogin);
+app.get("/api/coupons", couponController.readCoupon);
+app.post("/api/coupons", couponController.createCoupon);
+app.post("/api/coupons/use", couponController.useCoupon);
 
 export default app;
