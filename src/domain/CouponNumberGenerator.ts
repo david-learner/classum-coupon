@@ -18,9 +18,22 @@ export default class CouponNumberGenerator {
         const lower: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
         const upper: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-        let digitStorage: string[] = new Array(5);
-        let lowerStorage: string[] = new Array(5);
-        let upperStorage: string[] = new Array(6);
+        
+        let digitRandom:number = 1;
+        let lowerRandom:number = 1;
+        let upperRandom:number = 1;
+        
+        const maxRange = 14;
+        while((digitRandom + lowerRandom + upperRandom) != size) {
+            digitRandom = Math.floor(Math.random() * maxRange) + 1;
+            let nextRandomRange = maxRange - digitRandom;
+            lowerRandom = Math.floor(Math.random() * nextRandomRange) + 1;
+            upperRandom = size - digitRandom - lowerRandom;
+        }
+
+        let digitStorage: string[] = new Array(digitRandom);
+        let lowerStorage: string[] = new Array(lowerRandom);
+        let upperStorage: string[] = new Array(upperRandom);
 
         for (let i = 0; i < digitStorage.length; i++) {
             let digitRandom = Math.floor(Math.random() * digit.length);
