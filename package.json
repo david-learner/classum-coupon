@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "gulp compile && webpack && node ./dist/server",
+    "start": "npm run build && node ./dist/server",
     "start:dev": "gulp compile && webpack && npm run nodemon",
     "tsc": "tsc",
     "tsc:watch": "tsc --watch",
